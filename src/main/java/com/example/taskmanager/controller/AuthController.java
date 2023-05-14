@@ -9,10 +9,7 @@ import com.example.taskmanager.service.AuthService;
 import com.example.taskmanager.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -26,13 +23,20 @@ public class AuthController {
 
     @PostMapping("/login")
     public JwtResponse login(@RequestBody JwtRequest loginRequest) {
-        log.info("Login method invoked");
-        System.out.println(loginRequest.getPassword() + " " + loginRequest.getPassword());
+        log.info("LOGIN METHOD INVOKED" + loginRequest.getUsername() + " " + loginRequest.getPassword());
+//        return new JwtResponse();
         return  authService.login(loginRequest);
+    }
+
+    @GetMapping("/login")
+    public String getLogin() {
+        return  "get login";
     }
 
     @PostMapping("/register")
     public UserDto register(@RequestBody UserDto userDto) {
+        log.info("LOGIN METHOD INVOKED" + userDto.getUsername() + " " + userDto.getPassword());
+
         User user = userMapper.toEntity(userDto);
         User createdUser = userService.create(user);
 

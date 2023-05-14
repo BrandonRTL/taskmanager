@@ -40,7 +40,8 @@ public class UserController {
 
     @GetMapping("/{id}/tasks")
     public List<TaskDto> getTasksByUserId(@PathVariable Long id) {
-        List<Task> tasks = userService.getAllTasksByUserId(id);
+        List<Task> tasks = userService.getById(id).getUserTasks();
+        System.out.println(tasks);
         return taskMapper.toDto(tasks);
     }
 

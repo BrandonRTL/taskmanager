@@ -1,6 +1,7 @@
 package com.example.taskmanager.service.impl;
 
 import com.example.taskmanager.exception.DataNotFoundException;
+import com.example.taskmanager.model.Status;
 import com.example.taskmanager.model.Task;
 import com.example.taskmanager.repository.TaskRepository;
 import com.example.taskmanager.service.TaskService;
@@ -26,24 +27,27 @@ public class TaskServiceImpl implements TaskService {
     @Override
     @Transactional
     public Task update(Task task) {
-        return null;
+//        taskRepository.update(task);
+        return task;
     }
 
     @Override
     @Transactional
     public Task create(Task task) {
-        return null;
+        task.setStatus(Status.CREATED);
+        taskRepository.save(task);
+        return task;
     }
 
 
     @Override
     public List<Task> getAll() {
-        return null;
+        return taskRepository.findAll();
     }
 
     @Override
     @Transactional
     public void delete(Long id) {
-
+        taskRepository.deleteById(id);
     }
 }
