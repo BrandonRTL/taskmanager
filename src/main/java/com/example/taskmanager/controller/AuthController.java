@@ -7,6 +7,7 @@ import com.example.taskmanager.security.JwtRequest;
 import com.example.taskmanager.security.JwtResponse;
 import com.example.taskmanager.service.AuthService;
 import com.example.taskmanager.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Auth Controller", description = "Auth  API")
 public class AuthController {
 
     private final AuthService authService;
